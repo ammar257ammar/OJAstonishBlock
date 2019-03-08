@@ -1,5 +1,5 @@
 # OJAstonishBlock
-Joomla module displays wonderful looking, highly customizable block that fit in any position and suits all your needs
+Joomla module displays wonderful looking, highly customizable block that fits in any position and suits all your needs
 
 ![alt text](http://oceanicj.com/images/Demo.png)
 
