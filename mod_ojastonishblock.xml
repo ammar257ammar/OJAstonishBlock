@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" method="upgrade" client="site">
+	<name>OJ Astonish Block</name>
+	<creationDate>November 2014</creationDate>
+	<author>Ammar Ammar</author>
+	<authorEmail>ammar257ammar@gmail.com</authorEmail>
+	<authorUrl>http://oceanicj.com</authorUrl>
+	<copyright>Copyright (C) 2014-2019 OceanicJ. All rights reserved.</copyright>
+	<license>GNU GPL3</license>
+	<version>1.0.0</version>
+	<description>Displays wonderful looking, highly customizable block that fit in any position and suits all your needs</description>
+<files>
+	<filename module="mod_ojastonishblock">mod_ojastonishblock.php</filename>
+	<filename>helper.php</filename>
+	<filename>index.html</filename>
+	<folder>tmpl</folder>
+	<folder>language</folder>
+    <folder>admin</folder>
+    <folder>images</folder>
+</files>
+<languages>
+	<language tag="en-GB">language/en-GB/en-GB.mod_ojastonishblock.ini</language>
+</languages>
+<help url="HELP_EXTENSIONS_MODULE_OJASTONISHBLOCK_URL"/>
+<media destination="mod_ojastonishblock" folder="media">
+    <filename>index.html</filename>
+    <folder>css</folder>
+    <folder>fonts</folder>
+    <folder>js</folder>
+</media>
+<config>
+   	<fields name="params" addfieldpath="/administrator/components/com_content/models/fields" >
+
+		<fieldset name="basic" label="Basic" addfieldpath="/modules/mod_ojastonishblock/admin/elements" >
+
+            <field type="ojabAsset" />
+
+			<field name="ojabLinkType"
+                    type="radio"
+                    default="1"
+                    class="btn-group"
+                    label="MOD_OJASTONISHBLOCK_FIELD_LINKTYPE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_LINKTYPE_DESC" >
+                    <option value="0">MOD_OJASTONISHBLOCK_FIELD_LINKTYPE_OPTION_ARTICLE</option>
+					<option value="1">MOD_OJASTONISHBLOCK_FIELD_LINKTYPE_OPTION_CUSTOM</option>
+					<option value="2">MOD_OJASTONISHBLOCK_FIELD_LINKTYPE_OPTION_K2</option>
+            </field>
+
+        	<field name="ojabArticleID"
+                    type="modal_article"
+                    label="MOD_OJASTONISHBLOCK_FIELD_ARTICLEID_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_ARTICLEID_DESC" />
+
+        	<field name="ojabCustomLink"
+                    type="text"
+                    default="#"
+                    label="MOD_OJASTONISHBLOCK_FIELD_CUSTOMLINK_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_CUSTOMLINK_DESC"
+			        filter="raw" />
+			        
+			<field name="ojabK2ID"
+                    type="ojabK2"
+                    label="MOD_OJASTONISHBLOCK_FIELD_K2ID_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_K2ID_DESC" />
+
+        	<field name="ojabTitle"
+                    type="list"
+                    default="custom_title"
+                    label="MOD_OJASTONISHBLOCK_FIELD_TITLE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_TITLE_DESC" >
+                    <option value="none">MOD_OJASTONISHBLOCK_FIELD_TITLE_OPTION_NONE</option>
+     				<option value="article_title">MOD_OJASTONISHBLOCK_FIELD_TITLE_OPTION_ARTICLE</option>
+     				<option value="custom_title">MOD_OJASTONISHBLOCK_FIELD_TITLE_OPTION_CUSTOM</option>
+            </field>
+
+            <field name="ojabCustomTitle"
+                    type="text"
+                    default=""
+                    label="MOD_OJASTONISHBLOCK_FIELD_CUSTOMTITLE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_CUSTOMTITLE_DESC" 
+			        filter="raw" />
+
+        	<field name="ojabSubTitle"
+                    type="text"
+                    default=""
+                    label="MOD_OJASTONISHBLOCK_FIELD_SUBTITLE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_SUBTITLE_DESC" 
+			        filter="raw" />
+
+        	<field name="ojabLinkTitle"
+                    type="radio"
+                    default="1"
+                    class="btn-group"
+                    label="MOD_OJASTONISHBLOCK_FIELD_LINKTITLE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_LINKTITLE_DESC" >
+                    <option value="0">MOD_OJASTONISHBLOCK_FIELD_LINKTITLE_OPTION_NO</option>
+					<option value="1">MOD_OJASTONISHBLOCK_FIELD_LINKTITLE_OPTION_YES</option>
+            </field>
+
+        	<field name="ojabBodyText"
+                    type="list"
+                    default="custom_text"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BODYTEXT_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BODYTEXT_DESC" >
+                    <option value="none">MOD_OJASTONISHBLOCK_FIELD_BODYTEXT_OPTION_NONE</option>
+     				<option value="article_text">MOD_OJASTONISHBLOCK_FIELD_BODYTEXT_OPTION_ARTICLE</option>
+     				<option value="custom_text">MOD_OJASTONISHBLOCK_FIELD_BODYTEXT_OPTION_CUSTOM</option>
+            </field>
+
+            <field name="ojabCustomBodyText"
+                    type="textarea"
+                    default=""
+                    row="10"
+                    cols="5"
+                    label="MOD_OJASTONISHBLOCK_FIELD_CUSTOMBODYTEXT_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_CUSTOMBODYTEXT_DESC" 
+			        filter="raw" />
+
+            <field name="ojabArticleTextLimit"
+                    type="text"
+                    default="100"
+                    filter="integer"
+                    label="MOD_OJASTONISHBLOCK_FIELD_ARTICLETEXTLIMIT_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_ARTICLETEXTLIMIT_DESC" />
+
+            <field name="ojabShowButton"
+                    type="radio"
+                    default="1"
+                    class="btn-group"
+                    label="MOD_OJASTONISHBLOCK_FIELD_SHOWBUTTON_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_SHOWBUTTON_DESC" >
+                    <option value="0">MOD_OJASTONISHBLOCK_FIELD_SHOWBUTTON_OPTION_NO</option>
+					<option value="1">MOD_OJASTONISHBLOCK_FIELD_SHOWBUTTON_OPTION_YES</option>
+            </field>
+
+            <field name="ojabButtonText"
+                    type="text"
+                    default="Read More"
+                    maxlength="20"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BUTTONTEXT_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BUTTONTEXT_DESC" 
+			        filter="raw" />
+
+		</fieldset>
+
+        <fieldset name="image" label="Image">
+
+            <field name="ojabImage"
+                    type="list"
+                    default="glyphicon"
+                    label="MOD_OJASTONISHBLOCK_FIELD_IMAGE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_IMAGE_DESC" >
+                    <option value="none">MOD_OJASTONISHBLOCK_FIELD_IMAGE_OPTION_NONE</option>
+     				<option value="article_intro_image">MOD_OJASTONISHBLOCK_FIELD_IMAGE_OPTION_ARTICLE</option>
+                    <option value="glyphicon">MOD_OJASTONISHBLOCK_FIELD_IMAGE_OPTION_GLYPH</option>
+     				<option value="custom_image">MOD_OJASTONISHBLOCK_FIELD_IMAGE_OPTION_CUSTOM</option>
+            </field>
+
+             <field name="ojabCustomImage"
+                    type="media"
+                    label="MOD_OJASTONISHBLOCK_FIELD_CUSTOMIMAGE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_CUSTOMIMAGE_DESC" />
+			        
+			 <field name="ojabCustomImageAlt"
+                    type="text"
+                    default=""
+                    label="MOD_OJASTONISHBLOCK_FIELD_CUSTOMIMAGEALT_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_CUSTOMIMAGEALT_DESC" />
+
+             <field name="ojabGlyphiconSet"
+                    type="list"
+                    default="bootstrap"
+                    label="MOD_OJASTONISHBLOCK_FIELD_GLYPHICONSET_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_GLYPHICONSET_DESC" >
+                    <option value="bootstrap">MOD_OJASTONISHBLOCK_FIELD_GLYPHICONSET_OPTION_BOOTSTRAP</option>
+     				<option value="fontawesome">MOD_OJASTONISHBLOCK_FIELD_GLYPHICONSET_OPTION_AWESOME</option>
+            </field>
+
+            <field name="ojabGlyphiconClass"
+                    type="text"
+                    default="glyphicon glyphicon-globe"
+                    label="MOD_OJASTONISHBLOCK_FIELD_GLYPHICONCLASS_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_GLYPHICONCLASS_DESC" 
+			        filter="raw" />
+
+             <field name="ojabGlyphiconColor"
+                    type="color"
+                    default="#eee"
+                    label="MOD_OJASTONISHBLOCK_FIELD_GLYPHICONCOLOR_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_GLYPHICONCOLOR_DESC" />
+
+             <field name="ojabGlyphiconSize"
+                    type="text"
+                    default="24"
+                    maxlength="20"
+                    filter="integer"
+                    label="MOD_OJASTONISHBLOCK_FIELD_GLYPHICONSIZE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_GLYPHICONSIZE_DESC" />
+
+             <field name="ojabImagePosition"
+                    type="list"
+                    default="under_title"
+                    label="MOD_OJASTONISHBLOCK_FIELD_IMAGEPOSITION_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_IMAGEPOSITION_DESC" >
+                    <option value="top">MOD_OJASTONISHBLOCK_FIELD_IMAGEPOSITION_OPTION_TOP</option>
+                    <option value="under_title">MOD_OJASTONISHBLOCK_FIELD_IMAGEPOSITION_OPTION_UNDERTITLE</option>
+     				<option value="under_text">MOD_OJASTONISHBLOCK_FIELD_IMAGEPOSITION_OPTION_UNDERTEXT</option>
+     				<option value="bottom">MOD_OJASTONISHBLOCK_FIELD_IMAGEPOSITION_OPTION_BOTTOM</option>
+             </field>
+
+        </fieldset>
+
+        <fieldset name="style" label="Style">
+
+             <field name="ojabColorNote"
+                    type="note"
+                    class="alert"
+                    label="MOD_OJASTONISHBLOCK_FIELD_COLORNOTE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_COLORNOTE_DESC" />
+
+             <field name="ojabTitleColor"
+                    type="color"
+                    default="#eee"
+                    label="MOD_OJASTONISHBLOCK_FIELD_TITLECOLOR_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_TITLECOLOR_DESC" />
+
+             <field name="ojabSubtitleColor"
+                    type="color"
+                    default="#eee"
+                    label="MOD_OJASTONISHBLOCK_FIELD_SUBTITLECOLOR_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_SUBTITLECOLOR_DESC" />
+
+             <field name="ojabTextColor"
+                    type="color"
+                    default="#eee"
+                    label="MOD_OJASTONISHBLOCK_FIELD_TEXTCOLOR_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_TEXTCOLOR_DESC" />
+
+             <field name="ojabButtonColor"
+                    type="color"
+                    default="#eee"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BUTTONCOLOR_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BUTTONCOLOR_DESC" />
+
+             <field name="ojabBackgroundType"
+                    type="list"
+                    default="transperant"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTYPE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTYPE_DESC" >
+                    <option value="transperant">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTYPE_OPTION_TRANS</option>
+                    <option value="color">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTYPE_OPTION_COLOR</option>
+     				<option value="gradient">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTYPE_OPTION_GRADIENT</option>
+     				<option value="texture">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTYPE_OPTION_TEXTURE</option>
+     				<option value="hexagon">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTYPE_OPTION_HEXAGON</option>
+     				<option value="heart">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTYPE_OPTION_HEART</option>
+     				
+             </field>
+
+             <field name="ojabBackgroundColor"
+                    type="color"
+                    default="#eee"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDCOLOR_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDCOLOR_DESC" />
+
+             <field name="ojabBackgroundGradient1"
+                    type="color"
+                    default="#eee"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDGRADIENT1_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDGRADIENT1_DESC" />
+
+             <field name="ojabBackgroundGradient2"
+                    type="color"
+                    default="#eee"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDGRADIENT2_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDGRADIENT2_DESC" />
+
+             <field name="ojabBackgroundTexture"
+                    type="list"
+                    default="texture1"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTEXTURE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTEXTURE_DESC" >
+                    <option value="texture1">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTEXTURE_OPTION_T1</option>
+                    <option value="texture2">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTEXTURE_OPTION_T2</option>
+     				<option value="texture3">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTEXTURE_OPTION_T3</option>
+     				<option value="texture4">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTEXTURE_OPTION_T4</option>
+                    <option value="texture5">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDTEXTURE_OPTION_T5</option>
+             </field>
+             
+              <field name="ojabBackgroundHexagon"
+                    type="list"
+                    default="hexagon1"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEXAGON_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEXAGON_DESC" >
+                    <option value="hexagon1">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEXAGON_OPTION_T1</option>
+                    <option value="hexagon2">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEXAGON_OPTION_T2</option>
+     				<option value="hexagon3">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEXAGON_OPTION_T3</option>
+     				<option value="hexagon4">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEXAGON_OPTION_T4</option>
+                    <option value="hexagon5">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEXAGON_OPTION_T5</option>
+                    <option value="hexagon6">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEXAGON_OPTION_T6</option>
+             </field>
+             
+              <field name="ojabBackgroundHeart"
+                    type="list"
+                    default="heart1"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEART_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEART_DESC" >
+                    <option value="heart1">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEART_OPTION_T1</option>
+                    <option value="heart2">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEART_OPTION_T2</option>
+     				<option value="heart3">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEART_OPTION_T3</option>
+     				<option value="heart4">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEART_OPTION_T4</option>
+                    <option value="heart5">MOD_OJASTONISHBLOCK_FIELD_BACKGROUNDHEART_OPTION_T5</option>
+             </field>
+
+             <field name="ojabAlignNote"
+                    type="note"
+                    class="alert alert-info"
+                    label="MOD_OJASTONISHBLOCK_FIELD_ALIGNNOTE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_ALIGNNOTE_DESC" />
+
+             <field name="ojabTitleAlign"
+                    type="list"
+                    default="center"
+                    label="MOD_OJASTONISHBLOCK_FIELD_TITLEALIGN_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_TITLEALIGN_DESC" >
+                    <option value="center">MOD_OJASTONISHBLOCK_FIELD_TITLEALIGN_OPTION_CENTER</option>
+                    <option value="left">MOD_OJASTONISHBLOCK_FIELD_TITLEALIGN_OPTION_LEFT</option>
+     				<option value="right">MOD_OJASTONISHBLOCK_FIELD_TITLEALIGN_OPTION_RIGHT</option>
+             </field>
+
+             <field name="ojabImageAlign"
+                    type="list"
+                    default="center"
+                    label="MOD_OJASTONISHBLOCK_FIELD_IMAGEALIGN_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_IMAGEALIGN_DESC" >
+                    <option value="center">MOD_OJASTONISHBLOCK_FIELD_IMAGEALIGN_OPTION_CENTER</option>
+                    <option value="left">MOD_OJASTONISHBLOCK_FIELD_IMAGEALIGN_OPTION_LEFT</option>
+     				<option value="right">MOD_OJASTONISHBLOCK_FIELD_IMAGEALIGN_OPTION_RIGHT</option>
+             </field>
+
+             <field name="ojabTextAlign"
+                    type="list"
+                    default="center"
+                    label="MOD_OJASTONISHBLOCK_FIELD_TEXTALIGN_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_TEXTALIGN_DESC" >
+                    <option value="center">MOD_OJASTONISHBLOCK_FIELD_TEXTALIGN_OPTION_CENTER</option>
+                    <option value="left">MOD_OJASTONISHBLOCK_FIELD_TEXTALIGN_OPTION_LEFT</option>
+     				<option value="right">MOD_OJASTONISHBLOCK_FIELD_TEXTALIGN_OPTION_RIGHT</option>
+             </field>
+
+             <field name="ojabButtonAlign"
+                    type="list"
+                    default="center"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BUTTONALIGN_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BUTTONALIGN_DESC" >
+                    <option value="center">MOD_OJASTONISHBLOCK_FIELD_BUTTONALIGN_OPTION_CENTER</option>
+                    <option value="left">MOD_OJASTONISHBLOCK_FIELD_BUTTONALIGN_OPTION_LEFT</option>
+     				<option value="right">MOD_OJASTONISHBLOCK_FIELD_BUTTONALIGN_OPTION_RIGHT</option>
+             </field>
+
+             <field name="ojabShadowNote"
+                    type="note"
+                    class="alert alert-success"
+                    label="MOD_OJASTONISHBLOCK_FIELD_SHADOWNOTE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_SHADOWNOTE_DESC" />
+
+             <field name="ojabTitleShadow"
+                    type="text"
+                    default="0"
+                    label="MOD_OJASTONISHBLOCK_FIELD_TITLESHADOW_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_TITLESHADOW_DESC" 
+			        filter="raw" />
+
+             <field name="ojabImageShadow"
+                    type="text"
+                    default="0"
+                    label="MOD_OJASTONISHBLOCK_FIELD_IMAGESHADOW_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_IMAGESHADOW_DESC" 
+			        filter="raw" />
+
+             <field name="ojabBlockShadow"
+                    type="text"
+                    default="0"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BLOCKSHADOW_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BLOCKSHADOW_DESC" 
+			        filter="raw" />
+
+             <field name="ojabShapeNote"
+                    type="note"
+                    class="alert alert-error"
+                    label="MOD_OJASTONISHBLOCK_FIELD_SHAPENOTE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_SHAPENOTE_DESC" />
+			        
+			 <field name="ojabInsidePadding"
+                    type="text"
+                    default="0"
+                    label="MOD_OJASTONISHBLOCK_FIELD_INSIDEPADDING_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_INSIDEPADDING_DESC" 
+			        filter="raw" />
+			        
+			 <field name="ojabBlockHeight"
+                    type="text"
+                    default="auto"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BLOCKHEIGHT_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BLOCKHEIGHT_DESC" 
+			        filter="raw" />
+
+             <field name="ojabBlockShape"
+                    type="list"
+                    default="default"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BLOCKSHAPE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BLOCKSHAPE_DESC" >
+                    <option value="default">MOD_OJASTONISHBLOCK_FIELD_BLOCKSHAPE_OPTION_DEFAULT</option>
+                    <option value="round">MOD_OJASTONISHBLOCK_FIELD_BLOCKSHAPE_OPTION_ROUND</option>
+             </field>
+
+             <field name="ojabImageShape"
+                    type="list"
+                    default="default"
+                    label="MOD_OJASTONISHBLOCK_FIELD_IMAGESHAPE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_IMAGESHAPE_DESC" >
+                    <option value="default">MOD_OJASTONISHBLOCK_FIELD_IMAGESHAPE_OPTION_DEFAULT</option>
+                    <option value="round">MOD_OJASTONISHBLOCK_FIELD_IMAGESHAPE_OPTION_ROUND</option>
+                    <option value="circle">MOD_OJASTONISHBLOCK_FIELD_IMAGESHAPE_OPTION_CIRCLE</option>
+             </field>
+
+             <field name="ojabButtonShape"
+                    type="list"
+                    default="default"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BUTTONSHAPE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BUTTONSHAPE_DESC" >
+                    <option value="default">MOD_OJASTONISHBLOCK_FIELD_BUTTONSHAPE_OPTION_DEFAULT</option>
+                    <option value="round">MOD_OJASTONISHBLOCK_FIELD_BUTTONSHAPE_OPTION_ROUND</option>
+                    <option value="circle">MOD_OJASTONISHBLOCK_FIELD_BUTTONSHAPE_OPTION_CIRCLE</option>
+             </field>
+
+             <field name="ojabBorderNote"
+                    type="note"
+                    class="alert"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BORDERNOTE_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BORDERNOTE_DESC" />
+
+             <field name="ojabBlockBorder"
+                    type="text"
+                    default="0,#fff"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BLOCKBORDER_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BLOCKBORDER_DESC" 
+			        filter="raw" />
+
+             <field name="ojabImageBorder"
+                    type="text"
+                    default="0,#fff"
+                    label="MOD_OJASTONISHBLOCK_FIELD_IMAGEBORDER_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_IMAGEBORDER_DESC" 
+			        filter="raw" />
+
+             <field name="ojabButtonBorder"
+                    type="text"
+                    default="0,#fff"
+                    label="MOD_OJASTONISHBLOCK_FIELD_BUTTONBORDER_LABEL"
+			        description="MOD_OJASTONISHBLOCK_FIELD_BUTTONBORDER_DESC" 
+			        filter="raw" />
+
+        </fieldset>
+
+		<fieldset name="advanced">
+			<field
+			name="moduleclass_sfx"
+			type="text"
+			label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+			description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+			/>
+		</fieldset>
+	</fields>
+</config>
+</extension>
